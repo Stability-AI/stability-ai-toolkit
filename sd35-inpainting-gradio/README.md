@@ -1,6 +1,6 @@
 # Approvals
 - [x] @Waheed Brown will create stability-ai-toolkit as INTERNAL ONLY
-- [ ] @Waheed Brown will commit a public-friendly version of his Stable Diffusion 3.5 Inpainting in Gradio code
+- [x] @Waheed Brown will commit a public-friendly version of his Stable Diffusion 3.5 Inpainting in Gradio code
 - [ ] @Dennis Niedworok and @Thomas Ortiz Security Slack Channel (#help-security) will review the technical content for quality, and IP leaks
 - [ ] @Waheed Brown will write a Stability AI Learning Hub blog post titled "Stable Diffusion 3.5 Inpainting in Gradio"
 - [ ] @ana guillén will review the blog post for Marketing approval
@@ -8,8 +8,6 @@
 
 # Stable Diffusion 3.5 Inpainting in Gradio
 Gradio demo of inpainting using Stable Diffusion 3.5 Medium
-
-**NOTE:** White pixels in the mask are repainted while black pixels are preserved: [`mask_image` documentation](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/inpaint#diffusers.StableDiffusionInpaintPipeline.__call__.mask_image)
 
 ### Screen Shot
 ![screenshot.png](./images/screenshot.png)

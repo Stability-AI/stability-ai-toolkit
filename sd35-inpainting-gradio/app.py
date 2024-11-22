@@ -22,13 +22,25 @@ import os
 
 from diffusers import StableDiffusion3InpaintPipeline
 from huggingface_hub import login
-from PIL import Image
 
 class StableUI:
     _pipe = []
 
     def __init__(self):
         pass
+
+    def login_to_hugging_face(self):
+        # Make sure the HUGGING_FACE_HUB_TOKEN environment variable is set
+        # with your Hugging Face Access token, or log in from the command line:
+        #
+        #  huggingface-cli login
+        #
+        # Instructions for getting an access token: https://huggingface.co/docs/hub/en/security-tokens
+        if os.getenv('HUGGING_FACE_HUB_TOKEN') or os.getenv('HF_TOKEN'):
+            print("Hugging Face access token set")
+        else:
+            login()
+            print("\nWARNING: To avoid the Hugging Face login prompt in the future, please set the HF_TOKEN environment variable:\n\n    export HF_TOKEN=<YOUR HUGGING FACE USER ACCESS TOKEN>\n")
 
     def _check_shader(self):
         if torch.backends.mps.is_available():
@@ -44,13 +56,8 @@ class StableUI:
 
         # Extract the image and mask channels
         image = mask['background'].convert("RGB")
-        mask = mask['layers'][0]
-        white_background = Image.new('RGB', (512, 512), (255, 255, 255))
-        mask_image = white_background.resize(mask.size)
-        mask_image.paste(mask, (0, 0), mask)
+        mask_image = mask['layers'][0].convert("RGB")
 
-        # White pixels in the mask are repainted while black pixels are preserved, documentation:
-        #   https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/inpaint#diffusers.StableDiffusionInpaintPipeline.__call__.mask_image
         image.show()
         mask_image.show()
 
@@ -58,28 +65,19 @@ class StableUI:
         return images[0]
 
     def _start_gradio(self):
+        white_brush = gr.Brush(colors=['#FFFFFF'], color_mode='fixed')
+
         gr.Interface(
             self._predict,
             title='Stable Diffusion 3.5 Large In-Painting',
             inputs=[
-                gr.ImageMask(type='pil', label='Inpaint', canvas_size=(716, 716)),
+                gr.ImageMask(type='pil', label='Inpaint', canvas_size=(716, 716), brush=white_brush),
                 gr.Textbox(label='prompt')
             ],
             outputs='image'
         ).launch(debug=True, share=True)
 
-    def start_inpaint(self): 
-        # Make sure the HUGGING_FACE_HUB_TOKEN environment variable is set
-        # with your Hugging Face Access token, or log in from the command line:
-        #
-        #  huggingface-cli login
-        #
-        # Instructions for getting an access token: https://huggingface.co/docs/hub/en/security-tokens
-        if os.getenv('HUGGING_FACE_HUB_TOKEN') or os.getenv('HF_TOKEN'):
-            print("Hugging Face access token set")
-        else:
-            login()
-
+    def start_inpaint(self):
         self._pipe = StableDiffusion3InpaintPipeline.from_pretrained(
             "stabilityai/stable-diffusion-3.5-medium", torch_dtype=torch.float16)
         device = self._check_shader()
@@ -90,6 +88,7 @@ class StableUI:
 
 def main():
     ui = StableUI()
+    ui.login_to_hugging_face()
     ui.start_inpaint()
 
 if __name__ == "__main__":
