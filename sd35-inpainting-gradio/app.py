@@ -69,7 +69,7 @@ class StableUI:
 
         gr.Interface(
             self._predict,
-            title='Stable Diffusion 3.5 Large In-Painting',
+            title='Stable Diffusion 3.5 Medium In-Painting',
             inputs=[
                 gr.ImageMask(type='pil', label='Inpaint', canvas_size=(716, 716), brush=white_brush),
                 gr.Textbox(label='prompt')
