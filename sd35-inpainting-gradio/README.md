@@ -1,11 +1,3 @@
-# Approvals
-- [x] @Waheed Brown will create stability-ai-toolkit as INTERNAL ONLY
-- [x] @Waheed Brown will commit a public-friendly version of his Stable Diffusion 3.5 Inpainting in Gradio code
-- [x] Security Slack Channel (#help-security) will review the technical content for quality, and IP leaks
-- [x] @Waheed Brown will write a Stability AI Learning Hub blog post titled "[Stable Diffusion 3.5 Inpainting in Gradio](https://docs.google.com/document/d/1c14QosKu3bHLPhyQAhgRPl4siZ-OWGgi2k8LK808Foc/edit?usp=sharinghttps://docs.google.com/document/d/1c14QosKu3bHLPhyQAhgRPl4siZ-OWGgi2k8LK808Foc/edit?usp=sharing)"
-- [ ] @ana guillén will review the blog post for Marketing approval
-- [ ] @Scott will give final approval for blog post and public code go live
-
 # Stable Diffusion 3.5 Inpainting in Gradio
 Gradio demo of inpainting using Stable Diffusion 3.5 Medium
 
