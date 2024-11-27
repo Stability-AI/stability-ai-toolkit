@@ -22,6 +22,7 @@ import os
 
 from diffusers import AutoPipelineForImage2Image
 from huggingface_hub import login
+from tqdm.auto import tqdm
 
 class StableUI:
     _pipe = []
@@ -52,7 +53,7 @@ class StableUI:
 
         return device
 
-    def _predict(self, init_image, strength, guidance_scale, prompt, negative_prompt):
+    def _predict(self, init_image, strength, guidance_scale, prompt, negative_prompt, progress=gr.Progress(track_tqdm=True)):
         init_image = init_image.resize((1024, 1024))
 
         images = self._pipe(
@@ -62,6 +63,7 @@ class StableUI:
             guidance_scale=guidance_scale,
             negative_prompt=negative_prompt
         ).images
+
         return images[0]
 
     def _start_gradio(self):

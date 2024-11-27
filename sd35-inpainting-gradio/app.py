@@ -22,6 +22,7 @@ import os
 
 from diffusers import StableDiffusion3InpaintPipeline
 from huggingface_hub import login
+from tqdm.auto import tqdm
 
 class StableUI:
     _pipe = []
@@ -52,7 +53,7 @@ class StableUI:
 
         return device
 
-    def _predict(self, mask, prompt):
+    def _predict(self, mask, prompt, progress=gr.Progress(track_tqdm=True)):
 
         # Extract the image and mask channels
         image = mask['background'].convert("RGB")
@@ -71,7 +72,7 @@ class StableUI:
             self._predict,
             title='Stable Diffusion 3.5 Medium In-Painting',
             inputs=[
-                gr.ImageMask(type='pil', label='Inpaint', canvas_size=(716, 716), brush=white_brush),
+                gr.ImageMask(type='pil', label='Inpaint', height="680px", brush=white_brush),
                 gr.Textbox(label='prompt')
             ],
             outputs='image'
