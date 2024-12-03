@@ -22,7 +22,6 @@ import os
 
 from diffusers import StableDiffusion3InpaintPipeline
 from huggingface_hub import login
-from tqdm.auto import tqdm
 
 class StableUI:
     _pipe = []

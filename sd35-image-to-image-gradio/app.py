@@ -22,7 +22,6 @@ import os
 
 from diffusers import AutoPipelineForImage2Image
 from huggingface_hub import login
-from tqdm.auto import tqdm
 
 class StableUI:
     _pipe = []
@@ -80,7 +79,7 @@ class StableUI:
             outputs='image'
         ).launch(debug=True, share=True)
 
-    def start_background_replacement(self):
+    def start_image_to_image(self):
         self._pipe = AutoPipelineForImage2Image.from_pretrained(
             "stabilityai/stable-diffusion-3.5-medium", torch_dtype=torch.float16
         )
@@ -93,7 +92,7 @@ class StableUI:
 def main():
     ui = StableUI()
     ui.login_to_hugging_face()
-    ui.start_background_replacement()
+    ui.start_image_to_image()
 
 if __name__ == "__main__":
     main()
