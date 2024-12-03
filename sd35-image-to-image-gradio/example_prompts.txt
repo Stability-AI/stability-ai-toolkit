@@ -1,0 +1,20 @@
+positive prompt:
+Replace the soldiers with elves holding bows and arrows
+
+positive prompt:
+Replace the soldiers with elves holding crossbows, first-person-shooter screen shot, 4k
+The elves are wearing hoods
+
+
+positive prompt:
+Replace the soldiers with elves holding bows and arrows, first-person-shooter screen shot, 4k
+The elves are wearing hoods
+There is a dragon flying in the sky
+
+
+positive prompt:
+Replace the soldiers with elves holding bows and arrows, video game screen shot, 4k
+The elves are wearing hoods. There is one dragon flying in the sky
+
+negative prompt:
+No bad bows. No bad arrows. No extra arms. No bad faces

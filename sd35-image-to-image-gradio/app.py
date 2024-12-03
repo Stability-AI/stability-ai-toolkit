@@ -20,7 +20,7 @@ import gradio as gr
 import torch
 import os
 
-from diffusers import StableDiffusion3InpaintPipeline
+from diffusers import AutoPipelineForImage2Image
 from huggingface_hub import login
 
 class StableUI:
@@ -52,34 +52,37 @@ class StableUI:
 
         return device
 
-    def _predict(self, mask, prompt, progress=gr.Progress(track_tqdm=True)):
+    def _predict(self, init_image, strength, guidance_scale, prompt, negative_prompt, progress=gr.Progress(track_tqdm=True)):
+        init_image = init_image.resize((1024, 1024))
 
-        # Extract the image and mask channels
-        image = mask['background'].convert("RGB")
-        mask_image = mask['layers'][0].convert("RGB")
+        images = self._pipe(
+            prompt=prompt,
+            image=init_image,
+            strength=strength,
+            guidance_scale=guidance_scale,
+            negative_prompt=negative_prompt
+        ).images
 
-        image.show()
-        mask_image.show()
-
-        images = self._pipe(prompt=prompt, image=image, mask_image=mask_image).images
         return images[0]
 
     def _start_gradio(self):
-        white_brush = gr.Brush(colors=['#FFFFFF'], color_mode='fixed')
-
         gr.Interface(
             self._predict,
-            title='Stable Diffusion 3.5 Medium In-Painting',
+            title='Stable Diffusion 3.5 Medium Image-to-Image',
             inputs=[
-                gr.ImageMask(type='pil', label='Inpaint', height="680px", brush=white_brush),
-                gr.Textbox(label='prompt')
+                gr.Image(type='pil', label='Initial Image'),
+                gr.Slider(minimum=0, maximum=1, value=0.75, label="strength (increase to ignore input image)"),
+                gr.Slider(minimum=1, maximum=10, value=7.5, label="guidance scale (increase to apply text prompt)"),
+                gr.Textbox(label='prompt'),
+                gr.Textbox(label='negative prompt')
             ],
             outputs='image'
         ).launch(debug=True, share=True)
 
-    def start_inpaint(self):
-        self._pipe = StableDiffusion3InpaintPipeline.from_pretrained(
-            "stabilityai/stable-diffusion-3.5-medium", torch_dtype=torch.float16)
+    def start_image_to_image(self):
+        self._pipe = AutoPipelineForImage2Image.from_pretrained(
+            "stabilityai/stable-diffusion-3.5-medium", torch_dtype=torch.float16
+        )
         device = self._check_shader()
         self._pipe.to(device)
 
@@ -89,7 +92,7 @@ class StableUI:
 def main():
     ui = StableUI()
     ui.login_to_hugging_face()
-    ui.start_inpaint()
+    ui.start_image_to_image()
 
 if __name__ == "__main__":
     main()
