@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """
-This app makes a simple inpainting UI for Stable Diffusion
+This app makes a simple image-to-image UI for Stable Diffusion
 """
 
 import gradio as gr
