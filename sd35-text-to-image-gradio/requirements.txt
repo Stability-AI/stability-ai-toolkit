@@ -13,6 +13,7 @@
 # limitations under the License.
 
 accelerate==1.1.1
+bitsandbytes==0.45.0
 diffusers==0.31.0
 gradio==5.6.0
 opencv-python==4.10.0.84
@@ -23,13 +24,13 @@ transformers==4.46.2
 # PyTorch
 
 # NVIDIA GPUs: Uncomment the following 4 lines if you have a CUDA-capable GPU (CUDA version 12.1)
-# torch
-# torchvision
-# torchaudio
-# --extra-index-url https://download.pytorch.org/whl/cu121
-
-# MacOS: Uncomment the following 4 lines (prerelease versions): https://developer.apple.com/metal/pytorch/
 torch
 torchvision
 torchaudio
---extra-index-url https://download.pytorch.org/whl/nightly/cpu
+--extra-index-url https://download.pytorch.org/whl/cu121
+
+# MacOS: Uncomment the following 4 lines (prerelease versions): https://developer.apple.com/metal/pytorch/
+# torch
+# torchvision
+# torchaudio
+# --extra-index-url https://download.pytorch.org/whl/nightly/cpu

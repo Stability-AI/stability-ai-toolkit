@@ -22,11 +22,11 @@ transformers==4.46.2
 
 # PyTorch
 
-# NVIDIA GPUs: Uncomment the following 4 lines if you have a CUDA-capable GPU (CUDA version 11.8)
-#torch
-#torchvision
-#torchaudio
-#--extra-index-url https://download.pytorch.org/whl/cu118
+# NVIDIA GPUs: Uncomment the following 4 lines if you have a CUDA-capable GPU (CUDA version 12.1)
+# torch
+# torchvision
+# torchaudio
+# --extra-index-url https://download.pytorch.org/whl/cu121
 
 # MacOS: Uncomment the following 4 lines (prerelease versions): https://developer.apple.com/metal/pytorch/
 torch
