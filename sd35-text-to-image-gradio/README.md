@@ -8,12 +8,12 @@ Full documentation is available on Hugging Face: [Stable Diffusion Text-to-image
 
 ## Quick Start
 1. Open a web browser, log in to Hugging Face and register your name and email,
-   to use [stable-diffusion-3.5-medium](https://huggingface.co/stabilityai/stable-diffusion-3.5-medium)
+   to use [stable-diffusion-3.5-large](https://huggingface.co/stabilityai/stable-diffusion-3.5-large)
 2. Create a new Hugging Face [user access token](https://huggingface.co/docs/hub/en/security-tokens),
    which will capture that you completed the registration form
 3. Clone this repo to your machine and change into the directory for this demo:
    ```
-   cd ./stability-ai-toolkit/sd35-inpainting-gradio
+   cd ./stability-ai-toolkit/sd35-text-to-image-gradio
    ```
 4. Set up the app in a Python virtual environment:
 
