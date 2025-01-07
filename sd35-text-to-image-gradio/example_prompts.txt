@@ -1,0 +1,5 @@
+positive prompt:
+Children's birthday party
+
+negative prompt:
+No birthday cake
