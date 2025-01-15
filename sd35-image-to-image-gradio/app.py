@@ -68,7 +68,7 @@ class StableUI:
     def _start_gradio(self):
         gr.Interface(
             self._predict,
-            title='Stable Diffusion 3.5 Medium Image-to-Image',
+            title='Stable Diffusion 3.5 Large Image-to-Image',
             inputs=[
                 gr.Image(type='pil', label='Initial Image'),
                 gr.Slider(minimum=0, maximum=1, value=0.75, label="strength (increase to ignore input image)"),
@@ -81,7 +81,7 @@ class StableUI:
 
     def start_image_to_image(self):
         self._pipe = AutoPipelineForImage2Image.from_pretrained(
-            "stabilityai/stable-diffusion-3.5-medium", torch_dtype=torch.float16
+            "stabilityai/stable-diffusion-3.5-large", torch_dtype=torch.float16
         )
         device = self._check_shader()
         self._pipe.to(device)

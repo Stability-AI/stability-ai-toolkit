@@ -69,7 +69,7 @@ class StableUI:
 
         gr.Interface(
             self._predict,
-            title='Stable Diffusion 3.5 Medium In-Painting',
+            title='Stable Diffusion 3.5 Large In-Painting',
             inputs=[
                 gr.ImageMask(type='pil', label='Inpaint', height="680px", brush=white_brush),
                 gr.Textbox(label='prompt')
@@ -79,7 +79,7 @@ class StableUI:
 
     def start_inpaint(self):
         self._pipe = StableDiffusion3InpaintPipeline.from_pretrained(
-            "stabilityai/stable-diffusion-3.5-medium", torch_dtype=torch.float16)
+            "stabilityai/stable-diffusion-3.5-large", torch_dtype=torch.float16)
         device = self._check_shader()
         self._pipe.to(device)
 

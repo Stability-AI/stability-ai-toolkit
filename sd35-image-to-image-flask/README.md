@@ -11,9 +11,9 @@ This repo folder is for making a simple Stable Diffusion 3.5 Image-to-Image API,
 **NOTE:** In this code sample the Stable Diffusion 3.5 model is loaded locally using environment variable `MODEL_PATH` and not from Hugging Face
 
 1. Open a web browser, log in to Hugging Face and register your name and email
-2. git clone [stable-diffusion-3.5-medium](https://huggingface.co/stabilityai/stable-diffusion-3.5-medium) (or your desired Stable Diffusion 3.5 version) to your local machine
+2. git clone [stable-diffusion-3.5-large](https://huggingface.co/stabilityai/stable-diffusion-3.5-large) (or your desired Stable Diffusion 3.5 version) to your local machine
    ```
-   git clone https://huggingface.co/stabilityai/stable-diffusion-3.5-medium
+   git clone https://huggingface.co/stabilityai/stable-diffusion-3.5-large
    ```
 3. Clone this repo ([stability-ai-toolkit](../)) to your local machine and change into the directory for this demo:
    ```
@@ -26,7 +26,7 @@ This repo folder is for making a simple Stable Diffusion 3.5 Image-to-Image API,
    ```
 5. Inside your virutal environment, set the `MODEL_PATH` environment variable equal to the absolute path of your Stable Diffusion model downloaded in step 2 above, for example:
    ```
-   export MODEL_PATH=/absolute/path/to/stable-diffusion-3.5-medium
+   export MODEL_PATH=/absolute/path/to/stable-diffusion-3.5-large
    ```
 6. Install dependencies
    ```
@@ -67,7 +67,7 @@ This repo folder is for making a simple Stable Diffusion 3.5 Image-to-Image API,
 * The Stable Diffusion 3.5 model must be downloaded from Hugging Face and referenced as a directory containing all of the model weights, tokenizer and configuration (json) files
 * Set the `MODEL_PATH` environment variable equal to the absolute path of the downloaded Stable Diffusion 3.5 model; for example:
   ```
-  export MODEL_PATH=/absolute/path/to/stable-diffusion-3.5-medium
+  export MODEL_PATH=/absolute/path/to/stable-diffusion-3.5-large
   ```
 
 # Handling Multiplart POST Requests
