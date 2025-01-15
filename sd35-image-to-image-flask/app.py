@@ -31,7 +31,7 @@ try:
         model_path, torch_dtype=torch.float16
     )
 except OSError as e:
-    print("\nPlease set environment variable MODEL_PATH equal to the absolute path of your downloaded Stable Diffusion model, for example:\n\nexport MODEL_PATH=/absolute/path/to/stable-diffusion-3.5-medium\n", file=sys.stderr)
+    print("\nPlease set environment variable MODEL_PATH equal to the absolute path of your downloaded Stable Diffusion model, for example:\n\nexport MODEL_PATH=/absolute/path/to/stable-diffusion-3.5-large\n", file=sys.stderr)
     sys.exit(1)
 
 def check_shader():

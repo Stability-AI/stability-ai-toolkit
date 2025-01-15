@@ -1,5 +1,5 @@
 # Stable Diffusion 3.5 Inpainting in Gradio
-Gradio demo of inpainting using Stable Diffusion 3.5 Medium
+Gradio demo of inpainting using Stable Diffusion 3.5 Large
 
 **Estimated Inference Speed:** 23 seconds for Stable Diffusion 3.5 Large on an NVIDIA H100 GPU
 
@@ -11,7 +11,7 @@ Gradio demo of inpainting using Stable Diffusion 3.5 Medium
 
 ## Quick Start
 1. Open a web browser, log in to Hugging Face and register your name and email,
-   to use [stable-diffusion-3.5-medium](https://huggingface.co/stabilityai/stable-diffusion-3.5-medium)
+   to use [stable-diffusion-3.5-large](https://huggingface.co/stabilityai/stable-diffusion-3.5-large)
 2. Create a new Hugging Face [user access token](https://huggingface.co/docs/hub/en/security-tokens),
    which will capture that you completed the registration form
 3. Clone this repo to your machine and change into the directory for this demo:
@@ -48,9 +48,7 @@ Gradio demo of inpainting using Stable Diffusion 3.5 Medium
 8. Open UI in a web browser: [http://127.0.0.1:7861](http://127.0.0.1:7861)
 
 ## Usage Tips
-* If you're trying to modify the code into your own app, swap out `stabilityai/stable-diffusion-3.5-medium` for
-  `stabilityai/stable-diffusion-3-medium-diffusers`, which has faster inference time (but lower quality)
+* If you're trying to modify the code into your own app, swap out `stabilityai/stable-diffusion-3.5-large` for
+  `stabilityai/stable-diffusion-3.5-medium`, which has faster inference time (but lower quality)
 
-  Once you're finished development then swap `stabilityai/stable-diffusion-3.5-medium` for higher quality output
-
-  NOTE: `stabilityai/stable-diffusion-3-medium-diffusers` seems to have restricted access to Stability AI employees only
+  Once you're finished development then swap `stabilityai/stable-diffusion-3.5-large` for higher quality output
