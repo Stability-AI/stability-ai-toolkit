@@ -20,6 +20,7 @@ import gradio as gr
 import torch
 import os
 
+from diffusers import BitsAndBytesConfig, SD3Transformer2DModel
 from diffusers import StableDiffusion3Pipeline
 from huggingface_hub import login
 
@@ -42,16 +43,6 @@ class StableUI:
             login()
             print("\nWARNING: To avoid the Hugging Face login prompt in the future, please set the HF_TOKEN environment variable:\n\n    export HF_TOKEN=<YOUR HUGGING FACE USER ACCESS TOKEN>\n")
 
-    def _check_shader(self):
-        if torch.backends.mps.is_available():
-            device = "mps"
-        elif torch.cuda.is_available():
-            device = "cuda"
-        else:
-            device = "cpu"
-
-        return device
-
     def _predict(self, guidance_scale, prompt, negative_prompt, progress=gr.Progress(track_tqdm=True)):
         images = self._pipe(
             prompt=prompt,
@@ -64,7 +55,7 @@ class StableUI:
     def _start_gradio(self):
         gr.Interface(
             self._predict,
-            title='Stable Diffusion 3.5 Large Text-to-Image',
+            title='4-Bit Quantized Stable Diffusion 3.5 Large Text-to-Image',
             inputs=[
                 gr.Slider(minimum=1, maximum=10, value=7.5, label="guidance scale (increase to apply text prompt)"),
                 gr.Textbox(label='prompt'),
@@ -74,11 +65,26 @@ class StableUI:
         ).launch(debug=True, share=True)
 
     def start_text_to_image(self):
-        self._pipe = StableDiffusion3Pipeline.from_pretrained(
-            "stabilityai/stable-diffusion-3.5-large", torch_dtype=torch.bfloat16
+        model_id = "stabilityai/stable-diffusion-3.5-large"
+
+        nf4_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_quant_type="nf4",
+            bnb_4bit_compute_dtype=torch.bfloat16
         )
-        device = self._check_shader()
-        self._pipe.to(device)
+        model_nf4 = SD3Transformer2DModel.from_pretrained(
+            model_id,
+            subfolder="transformer",
+            quantization_config=nf4_config,
+            torch_dtype=torch.bfloat16
+        )
+
+        self._pipe = StableDiffusion3Pipeline.from_pretrained(
+            model_id,
+            transformer=model_nf4,
+            torch_dtype=torch.bfloat16
+        )
+        self._pipe.enable_model_cpu_offload()
 
         self._start_gradio()
         return 0

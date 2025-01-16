@@ -1,11 +1,11 @@
 # Stable Diffusion 3.5 Image-to-Image in Gradio
 Gradio demo of [image-to-image](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/img2img) using Stable Diffusion 3.5 Medium
 
-**Estimated Inference Speed:** 23 seconds for Stable Diffusion 3.5 Large on an NVIDIA H100 GPU
+**Estimated Inference Speed:** 7 seconds for Stable Diffusion 3.5 Large on an NVIDIA H100 GPU
 
 Full documentation is available on Hugging Face: [Stable Diffusion Image-to-image](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/img2img)
 
-### Screen Shot
+### Screenshot
 ![Screenshot](./images/screenshot.png)
 
 ## Quick Start
@@ -66,28 +66,32 @@ init_image = init_image.resize((640, 1536))
 ```
 #### 1536x1536
 
-  ![1536x1536](./images/input-image-size-examples/1536x1536.png)
+![1536x1536](./images/input-image-size-examples/1536x1536.png)
 
 #### 640x640
 
-  ![640x640](./images/input-image-size-examples/640x640.png)
+![640x640](./images/input-image-size-examples/640x640.png)
 
 #### 64x64
 
-  ![64x64](./images/input-image-size-examples/64x64.png)
+![64x64](./images/input-image-size-examples/64x64.png)
 
 #### 20x20
 
-  ![20x20](./images/input-image-size-examples/20x20.png)
+![20x20](./images/input-image-size-examples/20x20.png)
 
 #### 1x1536
 
-  ![1x1536](./images/input-image-size-examples/1x1536.png)
+**NOTE:** The error is due to the [Pillow](https://pypi.org/project/pillow/) [PIL.Image.resize()](https://github.com/Stability-AI/stability-ai-toolkit/blob/main/sd35-image-to-image-gradio/app.py#L56) method not liking the resize dimensions. Developers should test if SD3.5 image-to-image can tolerate these dimensions
+
+![1x1536](./images/input-image-size-examples/1x1536.png)
 
 #### 5x12
 
-  ![5x12](./images/input-image-size-examples/5x12.png)
+**NOTE:** The error is due to the [Pillow](https://pypi.org/project/pillow/) [PIL.Image.resize()](https://github.com/Stability-AI/stability-ai-toolkit/blob/main/sd35-image-to-image-gradio/app.py#L56) method not liking the resize dimensions. Developers should test if SD3.5 image-to-image can tolerate these dimensions
+
+![5x12](./images/input-image-size-examples/5x12.png)
 
 #### 640x1536
 
-  ![640x1536](./images/input-image-size-examples/640x1536.png)
+![640x1536](./images/input-image-size-examples/640x1536.png)
