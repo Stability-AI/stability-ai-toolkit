@@ -1,7 +1,7 @@
 # Stable Diffusion 3.5 Image-to-Image Python Flask App
 This repo folder is for making a simple Stable Diffusion 3.5 Image-to-Image API, using Python Flask
 
-**Estimated Inference Speed:** 23 seconds for Stable Diffusion 3.5 Large on an NVIDIA H100 GPU
+**Estimated Inference Speed:** 7 seconds for Stable Diffusion 3.5 Large on an NVIDIA H100 GPU
 
 **[Postman](https://www.postman.com/downloads/) Screenshot:**
 ![Postman Screenshot](./images/postman_screenshot.png)
