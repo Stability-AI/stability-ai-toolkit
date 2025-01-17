@@ -6,6 +6,19 @@ No birthday cake
 
 
 positive prompt:
+
+Three children sitting at a dining table
+There is a white table cloth on the table
+There are balloons in the background
+The kids are wearing party hats
+The background is a sunny day at a park
+
+negative prompt:
+
+<none>
+
+
+positive prompt:
 A group of elves hunting a dragon, 4k cinema
 
 negative prompt:
