@@ -15,7 +15,7 @@ Full documentation is available on Hugging Face: [Stable Diffusion Image-to-imag
    which will capture that you completed the registration form
 3. Clone this repo to your machine and change into the directory for this demo:
    ```
-   cd ./stability-ai-toolkit/sd35-inpainting-gradio
+   cd ./stability-ai-toolkit/sd35-image-to-image-gradio
    ```
 4. Set up the app in a Python virtual environment:
 
