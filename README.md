@@ -5,13 +5,6 @@ A collection of code samples for working with Stability AI's models. This repo w
 
 ![Inpainting](./images/screenshot_inpainting.png)
 
-## Stable Diffusion 3.5 Inference Speeds
-|Model|Inference Speed (seconds)|GPU / CPU|
-|-----|-------------------------|---|
-|SD3.5 M|4 s|NVIDIA H100 GPU with 80 GB of VRAM|
-|[4-Bit Quanitized SD3.5 L](/sd35-text-to-image-quantized-gradio/)|18 s|NVIDIA H100 GPU with 80 GB of VRAM <br> Inference partially offloaded to AWS EC2 p5.48xlarge instance's CPU: AMD EPYC 7R13|
-|SD3.5 L|7 s|NVIDIA H100 GPU with 80 GB of VRAM|
-
 ## Stable Diffusion 3.5 Negative Prompting
 
 **TL:DR; The key to removing objects isn't negative prompting but positive prompting for object placement**

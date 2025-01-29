@@ -26,7 +26,7 @@ transformers==4.46.2
 torch
 torchvision
 torchaudio
---extra-index-url https://download.pytorch.org/whl/cu121
+# --extra-index-url https://download.pytorch.org/whl/cu121
 
 # MacOS: Uncomment the following 4 lines (prerelease versions): https://developer.apple.com/metal/pytorch/
 # torch

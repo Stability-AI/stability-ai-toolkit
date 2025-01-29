@@ -5,5 +5,4 @@
 *.out
 *.pyc
 *.sbatch
-.venv
-venv
+*venv*

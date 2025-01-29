@@ -3,8 +3,6 @@ Gradio demo of [text-to-image](https://huggingface.co/docs/diffusers/api/pipelin
 
 Full documentation is available on Hugging Face: [Stable Diffusion Text-to-image](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/text2img)
 
-**Estimated Inference Speed:** 7 seconds for Stable Diffusion 3.5 Large on an NVIDIA H100 GPU
-
 ### Screenshot
 ![Screenshot](./images/screenshot.png)
 
