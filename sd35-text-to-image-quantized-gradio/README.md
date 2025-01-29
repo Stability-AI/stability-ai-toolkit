@@ -3,8 +3,6 @@ Gradio demo of [text-to-image](https://huggingface.co/docs/diffusers/api/pipelin
 
 Full documentation is available on Hugging Face: [Stable Diffusion Text-to-image](https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/text2img)
 
-**Estimated Inference Speed:** 18 seconds for quantized Stable Diffusion 3.5 Large on an NVIDIA H100 GPU
-
 ### Screenshot
 ![Screenshot](./images/screenshot.png)
 
@@ -15,7 +13,7 @@ Full documentation is available on Hugging Face: [Stable Diffusion Text-to-image
    which will capture that you completed the registration form
 3. Clone this repo to your machine and change into the directory for this demo:
    ```
-   cd ./stability-ai-toolkit/sd35-text-to-image-gradio
+   cd ./stability-ai-toolkit/sd35-text-to-image-quantized-gradio
    ```
 4. Set up the app in a Python virtual environment:
 
@@ -97,10 +95,3 @@ Many use cases for [Stable Diffusion 3.5 Large](https://huggingface.co/stability
 * There is often an acceptable decrease in generate image quality, with the benefit of a reduced cost due to reduced VRAM
 * Users working on their own computer with a retail GPU (or Apple Silicon with an integrated GPU) would benefit from this use case
 * [Stable Diffusion 3.5 Medium](https://huggingface.co/stabilityai/stable-diffusion-3.5-medium) (SD3.5 M) could alternatively be used as it has fewer parameters than Large and an inference speed that's even faster than quantized SD3.5 L
-
-### Stable Diffusion 3.5 Inference Speeds
-|Model|Inference Speed (seconds)|GPU / CPU|
-|-----|-------------------------|---|
-|SD3.5 M|4 s|NVIDIA H100 GPU with 80 GB of VRAM|
-|[4-Bit Quanitized SD3.5 L](/sd35-text-to-image-quantized-gradio/)|18 s|NVIDIA H100 GPU with 80 GB of VRAM <br> Inference partially offloaded to AWS EC2 p5.48xlarge instance's CPU: AMD EPYC 7R13|
-|SD3.5 L|7 s|NVIDIA H100 GPU with 80 GB of VRAM|

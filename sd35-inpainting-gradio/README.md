@@ -1,8 +1,6 @@
 # Stable Diffusion 3.5 Inpainting in Gradio
 Gradio demo of inpainting using Stable Diffusion 3.5 Large
 
-**Estimated Inference Speed:** 7 seconds for Stable Diffusion 3.5 Large on an NVIDIA H100 GPU
-
 ### Screenshot
 ![screenshot.png](./images/screenshot.png)
 
