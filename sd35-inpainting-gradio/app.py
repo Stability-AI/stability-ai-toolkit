@@ -65,7 +65,7 @@ class StableUI:
         return images[0]
 
     def _start_gradio(self):
-        white_brush = gr.Brush(colors=['#FFFFFF'], color_mode='fixed')
+        white_brush = gr.Brush(default_color='#FFFFFF', colors=['#FFFFFF'], color_mode='fixed')
 
         gr.Interface(
             self._predict,
