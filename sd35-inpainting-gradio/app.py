@@ -57,6 +57,7 @@ class StableUI:
         # Extract the image and mask channels
         image = mask['background'].convert("RGB")
         mask_image = mask['layers'][0].convert("RGB")
+        width, height = image.size
 
         image.show()
         mask_image.show()
@@ -65,6 +66,8 @@ class StableUI:
             prompt=prompt,
             image=image,
             mask_image=mask_image,
+            width=width,
+            height=height,
             strength=strength,
             guidance_scale=guidance_scale,
             negative_prompt=negative_prompt
@@ -84,7 +87,7 @@ class StableUI:
                 gr.Textbox(label='prompt'),
                 gr.Textbox(label='negative prompt')
             ],
-            outputs='image'
+            outputs=gr.Image(type="pil")
         ).launch(debug=True, share=True)
 
     def start_inpaint(self):
