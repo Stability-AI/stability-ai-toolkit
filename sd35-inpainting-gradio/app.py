@@ -85,6 +85,8 @@ class StableUI:
             prompt=prompt,
             image=image,
             mask_image=mask_image,
+            width=new_width,
+            height=new_height,
             strength=strength,
             guidance_scale=guidance_scale,
             negative_prompt=negative_prompt
