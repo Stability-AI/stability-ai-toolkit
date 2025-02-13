@@ -52,16 +52,26 @@ class StableUI:
 
         return device
 
-    def _predict(self, mask, prompt, progress=gr.Progress(track_tqdm=True)):
+    def _predict(self, mask, strength, guidance_scale, prompt, negative_prompt, progress=gr.Progress(track_tqdm=True)):
 
         # Extract the image and mask channels
         image = mask['background'].convert("RGB")
         mask_image = mask['layers'][0].convert("RGB")
+        width, height = image.size
 
         image.show()
         mask_image.show()
 
-        images = self._pipe(prompt=prompt, image=image, mask_image=mask_image).images
+        images = self._pipe(
+            prompt=prompt,
+            image=image,
+            mask_image=mask_image,
+            width=width,
+            height=height,
+            strength=strength,
+            guidance_scale=guidance_scale,
+            negative_prompt=negative_prompt
+        ).images
         return images[0]
 
     def _start_gradio(self):
@@ -72,9 +82,12 @@ class StableUI:
             title='Stable Diffusion 3.5 Large In-Painting',
             inputs=[
                 gr.ImageMask(type='pil', label='Inpaint', height="680px", brush=white_brush),
-                gr.Textbox(label='prompt')
+                gr.Slider(minimum=0, maximum=1, value=1.0, label="strength (increase inpainting strength)"),
+                gr.Slider(minimum=1, maximum=10, value=7.5, label="guidance scale (increase to apply text prompt)"),
+                gr.Textbox(label='prompt'),
+                gr.Textbox(label='negative prompt')
             ],
-            outputs='image'
+            outputs=gr.Image(type="pil")
         ).launch(debug=True, share=True)
 
     def start_inpaint(self):
