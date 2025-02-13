@@ -57,7 +57,19 @@ class StableUI:
 
         # Extract the image and mask channels
         image = mask['background'].convert("RGB")
-        mask_image = mask['layers'][0].convert("RGB")
+        mask_image = mask['layers'][0].convert("L")  # Convert mask to grayscale
+        mask_image = mask_image.resize(image.size)  # Ensure same dimensions
+                
+        width, height = image.size
+
+        constrained_dimension = min(width, height)
+        if constrained_dimension < 512:
+            width = int(512 * width / constrained_dimension)
+            height = int(512 * height / constrained_dimension)
+
+            new_dimensions = (width, height)
+            image = image.resize(new_dimensions)
+            mask_image = mask_image.resize(new_dimensions)
 
         image.show()
         mask_image.show()
