@@ -59,6 +59,15 @@ class StableUI:
         mask_image = mask['layers'][0].convert("RGB")
         width, height = image.size
 
+        constrained_dimension = min(width, height)
+        if constrained_dimension < 512:
+            width = int(512 * width / constrained_dimension)
+            height = int(512 * height / constrained_dimension)
+
+            new_dimensions = (width, height)
+            image = image.resize(new_dimensions)
+            mask_image = mask_image.resize(new_dimensions)
+
         image.show()
         mask_image.show()
 
