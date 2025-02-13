@@ -23,6 +23,7 @@ import os
 from diffusers import StableDiffusion3InpaintPipeline
 from huggingface_hub import login
 
+torch.mps.empty_cache()
 class StableUI:
     _pipe = []
 
@@ -81,7 +82,7 @@ class StableUI:
         self._pipe = StableDiffusion3InpaintPipeline.from_pretrained(
             "stabilityai/stable-diffusion-3.5-large", torch_dtype=torch.float16)
         device = self._check_shader()
-        self._pipe.to(device)
+        self._pipe.to(device, torch.float16)
 
         self._start_gradio()
         return 0
