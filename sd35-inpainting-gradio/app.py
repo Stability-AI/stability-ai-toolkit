@@ -55,12 +55,8 @@ class StableUI:
     def _predict(self, mask, strength, guidance_scale, prompt, negative_prompt, progress=gr.Progress(track_tqdm=True)):
 
         # Extract the image and mask channels
-        # image = mask['background'].convert("RGB")
-        # mask_image = mask['layers'][0].convert("RGB")
         image = mask['background'].convert("RGB")
-        mask_image = mask['layers'][0].convert("L")  # Convert mask to grayscale
-        mask_image = mask_image.resize(image.size)  # Ensure same dimensions
-                
+        mask_image = mask['layers'][0].convert("RGB")
         width, height = image.size
 
         constrained_dimension = min(width, height)
@@ -105,7 +101,7 @@ class StableUI:
 
     def start_inpaint(self):
         self._pipe = StableDiffusion3InpaintPipeline.from_pretrained(
-            "stabilityai/stable-diffusion-3.5-medium", torch_dtype=torch.float16)
+            "stabilityai/stable-diffusion-3.5-large", torch_dtype=torch.float16)
         device = self._check_shader()
         self._pipe.to(device)
 
