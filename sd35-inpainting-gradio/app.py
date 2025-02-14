@@ -101,7 +101,7 @@ class StableUI:
             self._predict,
             title='Stable Diffusion 3.5 Large In-Painting',
             inputs=[
-                gr.ImageMask(type='pil', label='Inpaint', height="680", brush=white_brush),
+                gr.ImageMask(type='pil', label='Inpaint', brush=white_brush),
                 gr.Slider(minimum=0, maximum=1, value=1.0, label="strength (increase inpainting strength)"),
                 gr.Slider(minimum=1, maximum=10, value=7.5, label="guidance scale (increase to apply text prompt)"),
                 gr.Textbox(label='prompt'),
