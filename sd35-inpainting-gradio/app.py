@@ -96,7 +96,7 @@ class StableUI:
 
     def _start_gradio(self):
         white_brush = gr.Brush(default_color='#FFFFFF', colors=['#FFFFFF'], color_mode='fixed')
-
+        #Keep height at 680 not 680px to avoid canvass issues
         gr.Interface(
             self._predict,
             title='Stable Diffusion 3.5 Large In-Painting',
